@@ -1,6 +1,5 @@
 <script setup>
 import {ref} from "vue";
-// import {useRoute} from "vue-router";
 import SidebarComponent from "@/components/SidebarComponent.vue";
 import TabComponent from "@/components/TabComponent.vue";
 
@@ -22,12 +21,6 @@ const fnSelectedMenu = (menu) => {
   // TabComponent에 직접 참조하여 fnTabHandler 함수를 호출
   tabComponentRef.value?.fnTabHandler(selectedMenu.value.selectedMenu[0]);
 }
-
-// onMounted(() => {
-//   if (route.name) {
-//
-//   }
-// })
 </script>
 
 <template>
