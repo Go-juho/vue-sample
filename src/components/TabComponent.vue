@@ -9,6 +9,8 @@ const emit = defineEmits([`cacheTabItems`, `selectTab`])
 const tabItems = ref([...tabItemList]);
 // 활성화 된 탭의 인덱스
 const selectedTabIndex = ref(0);
+// 각 탭의 고유 key값
+const tabkey = ref(0);
 
 /**
  * 탭을 추가하거나 선택
@@ -64,11 +66,10 @@ const fnCloseTab = (index) => {
 
     // console.log(`TabComponent.vue - fnCloseTab - 마지막 탭 닫음`, selectedTabIndex.value)
   } else {
-    console.log(`TabComponent.vue - fnCloseTab - 닫으려는 탭 인덱스`, index)
-    console.log(`TabComponent.vue - fnCloseTab - 중간 탭 닫음`, tabItems.value)
-
     // 중간 탭을 닫은 경우, 바로 오른쪽 탭을 선택
     selectedTabIndex.value = index;
+    // 탭 영역의 키를 변경시켜 강제로 탭 영역을 다시 그리도록 유도
+    tabkey.value += 1;
   }
 
   if (selectedTabIndex.value >= 0) {
@@ -96,6 +97,7 @@ defineExpose({fnTabHandler, tabItems});
 <template>
   <DxTabs
     id="tab"
+    :key="tabkey"
     ref="tabRef"
     :data-source="tabItems"
     :selected-index="selectedTabIndex"
