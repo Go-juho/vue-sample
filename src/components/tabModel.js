@@ -1,6 +1,7 @@
 export const tabItemList = [
   {
-    id: `Main`,
+    id: `main`,
     text: `메인`,
+    componentName: `MainView`
   },
 ]

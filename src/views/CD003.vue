@@ -1,9 +1,16 @@
 <script setup>
 
+import {ref} from "vue";
+
+const input = ref(``);
+
 </script>
 
 <template>
-  <div>CD003 컴포넌트</div>
+  <div>조직관리</div>
+
+
+  <input type="text" value="" v-model="input">
 </template>
 
 <style scoped>
